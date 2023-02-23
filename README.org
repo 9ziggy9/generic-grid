@@ -1,0 +1,65 @@
+* Generic Grid of Cells ("pixels")
+I got some tired of having to constantly rewrite grid boiler plate for making simple 2D games that are in a pixel playing field that I've abstracted the process.
+- Note that you need to initialize your project as a node module and serve it, as I us ES6 import syntax. If you have python3 installed, there is a very convenient HTTP module.
+#+BEGIN_SRC console
+$ python3 -m http.serve
+#+END_SRC
+- You can also alter grid.js and use module.exports if you want to use require and run from file path.
+- One need only copy over the grid.js file, make sure that import is relative to whatever path you place it in.
+#+BEGIN_SRC console
+$ npm init -y
+#+END_SRC
+** How to use
+Each grid object is a closure. To instantiate, you need to provide the unique id of both the grid, it's container and a class name for individual cells ("pixels"). For instance, suppose you have the following HTML and an entry point script called main.js.
+#+BEGIN_SRC html
+... other stuff
+  <body>
+    <div id="game">
+      <div id="grid"></div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+#+END_SRC
+In main.js, you simply need to import Grid constructor from grid module and instantiate it after DOM mount. i.e.
+#+BEGIN_SRC js
+import {Grid} from "./grid.js";
+
+function init() {
+  const grid = Grid({
+    cols: 16,
+    rows: 9,
+    scale: 5,
+    containerId: "game",
+    gridId: "grid",
+    cellClass: "cell",
+  });
+  grid.create();
+}
+ 
+window.onload = init;
+#+END_SRC
+The number of columns and rows basically define an aspect ratio, and you can scale the grid with the scale property. The size of the container is set as scale * rows, scale * cols in vw units.
+** Styling
+Note that I leave styling to the user. You can simply define corresponding ids and cell class name in a css file and style to your hearts content. Just note that one should not touch the following properties:
+#+BEGIN_SRC console
+display
+width
+height
+any column properties
+any row properties
+#+END_SRC
+My example simply defines the cell class via the corresponding className and gives it a border and background color.
+#+BEGIN_SRC css
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell {
+  background-color: gray;
+  border: 1px solid white;
+}
+#+END_SRC
