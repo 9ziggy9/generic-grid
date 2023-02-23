@@ -38,7 +38,7 @@ function init() {
  
 window.onload = init;
 #+END_SRC
-The number of columns and rows basically define an aspect ratio, and you can scale the grid with the scale property. The size of the container is set as scale * rows, scale * cols in vw units.
+The number of columns and rows basically define an aspect ratio, and you can scale the grid with the scale property. The size of the container is set as scale * rows, scale * cols in vmins.
 ** Styling
 Note that I leave styling to the user. You can simply define corresponding ids and cell class name in a css file and style to your hearts content. Just note that one should not touch the following properties:
 #+BEGIN_SRC console

@@ -12,8 +12,8 @@ export const Grid = (gridObj) => {
 
   const container = document.getElementById(containerId);
   const grid = document.getElementById(gridId);
-  container.style.width = `${scale * cols}vw`;
-  container.style.height = `${scale * rows}vw`;
+  container.style.width = `${scale * cols}vmin`;
+  container.style.height = `${scale * rows}vmin`;
   grid.style.display = "grid";
   grid.style.width = "100%";
   grid.style.height = "100%";
