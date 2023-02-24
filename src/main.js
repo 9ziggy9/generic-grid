@@ -4,7 +4,7 @@ function init() {
   const grid = Grid({
     cols: 16,
     rows: 9,
-    scale: 5,
+    scale: 7,
     containerId: "game",
     gridId: "grid",
     cellClass: "cell",
