@@ -30,6 +30,11 @@ export const Grid = (gridObj) => {
 	  grid.appendChild(cell);
 	}
       }
+    },
+    "bindListeners": (event, ...bindings) => {
+      for (const child of grid.children) {
+	bindings.forEach((b) => child.addEventListener(event, () => b(child)));
+      }
     }
   };
 };

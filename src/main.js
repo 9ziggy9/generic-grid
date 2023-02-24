@@ -10,6 +10,10 @@ function init() {
     cellClass: "cell",
   });
   grid.create();
+  grid.bindListeners("click",
+    () => console.log("Hello, world!"),
+    (cell) => console.log(cell.id),
+  );
 }
  
 window.onload = init;
